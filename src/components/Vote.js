@@ -76,7 +76,6 @@ export function Vote() {
 
   return (
     <div>
-      <a href="/">Home</a>
       <center>
         {showVoting && (
           <div>
@@ -100,12 +99,12 @@ export function Vote() {
         )}
         {isAlreadyVoted && (
           <div>
-            <h2>Your vote is already casted</h2>
+            <h3>Your vote is already casted</h3>
           </div>
         )}
         {!isEligible && (
           <div>
-            <h2>Not eligible for voting</h2>
+            <h3>Sorry, You are not eligible for voting</h3>
           </div>
         )}
       </center>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import VotingContract from "../contracts/VotingContract.json";
+import Button from "@mui/material/Button";
 
 export function AdminPage() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -53,35 +54,43 @@ export function AdminPage() {
 
   return (
     <div>
-      {isAdmin ? (
-        <div>
-          <h1>Admin Page</h1>
-          <button onClick={showResults}>Show Results</button>
-          {results && (
-            <table>
-              <thead>
-                <tr>
-                  <th>Candidate</th>
-                  <th>Vote Count</th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.map((result, index) => (
-                  <tr key={index}>
-                    <td>{results[0][0]}</td>
-                    <td>{results[0][1].toString()}</td>
+      <center>
+        {isAdmin ? (
+          <div>
+            <h3>Admin Page</h3>
+            <Button
+              type="submit"
+              variant="contained"
+              onClick={() => showResults()}
+            >
+              Show Results
+            </Button>
+            {results && (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Vote Count</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      ) : (
-        <div>
-          <h1>You are not an admin</h1>
-          <p>Access denied.</p>
-        </div>
-      )}
+                </thead>
+                <tbody>
+                  {results.map((result, index) => (
+                    <tr key={index}>
+                      <td>{results[0][0]}</td>
+                      <td>{results[0][1].toString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        ) : (
+          <div>
+            <h1>You are not an admin</h1>
+            <p>Access denied.</p>
+          </div>
+        )}
+      </center>
     </div>
   );
 }
